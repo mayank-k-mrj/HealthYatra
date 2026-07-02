@@ -127,4 +127,10 @@ public class RegisterController {
         }
         return "Aadhar not found with email "+email;
     }
+
+    @GetMapping("/testdb")
+    public String testDB(){
+        registerRepository.count();
+        return "DB Ok!";
+    }
 }
