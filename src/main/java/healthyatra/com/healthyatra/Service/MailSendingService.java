@@ -1,13 +1,17 @@
 package healthyatra.com.healthyatra.Service;
 
+import com.sendgrid.Request;
+import com.sendgrid.SendGrid;
+import com.sendgrid.helpers.mail.Mail;
+import com.sendgrid.helpers.mail.objects.Content;
+import com.sendgrid.helpers.mail.objects.Email;
 import healthyatra.com.healthyatra.Model.EmailVerify.EmailVerification;
 import healthyatra.com.healthyatra.Model.EmailVerify.OTPVerification;
 import healthyatra.com.healthyatra.Repository.EmailVerificationRepository;
 import healthyatra.com.healthyatra.Repository.OTPVerificationRepository;
+import org.apache.tomcat.util.http.Method;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.mail.SimpleMailMessage;
-import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -15,28 +19,11 @@ import java.time.LocalDateTime;
 @Service
 public class MailSendingService {
 
-    @Autowired
-    private JavaMailSender javaMailSender;
+    @Value("${sendgrid.api-key}")
+    private String apiKey;
 
-    @Value("${spring.mail.username}")
+    @Value("${sendgrid.from-email}")
     private String fromMail;
-
-    SimpleMailMessage mail = new SimpleMailMessage();
-
-    //Testing Sending Mail Feature
-    public void sendMail(){
-        try{
-
-            mail.setFrom(fromMail);
-            mail.setTo("ay892887@gmail.com");
-            mail.setSubject("Testing for mail sending (SMTP)");
-            mail.setText("Kaisa hai re bhai tu. Bhool gaya hai kya bhai");
-            javaMailSender.send(mail);
-        }
-        catch (Exception e){
-            System.out.println("Error occured while sending mail : "+e.getMessage());
-        }
-    }
 
     @Autowired
     private OTPVerificationRepository otpVerificationRepository;
@@ -71,13 +58,22 @@ public class MailSendingService {
 
     //Method Jo OTP send karega
     public Boolean sendOTP(String email, String otp){
-        mail.setFrom(fromMail);
-        mail.setTo(email);
-        mail.setSubject("Email Verification OTP");
-        mail.setText("Your OTP is: " + otp + "\nValid for 5 minutes.");
+        try {
+            // Ek hi line me Mail object create karna
+            Mail mail = new Mail(new Email(fromMail), "Email Verification OTP", new Email(email), new Content("text/plain", "Your OTP is: " + otp + "\nValid for 5 minutes."));
 
-        javaMailSender.send(mail);
-        return true;
+            // Request setup aur API call
+            Request request = new Request();
+            request.setMethod(com.sendgrid.Method.POST);
+            request.setEndpoint("mail/send");
+            request.setBody(mail.build());
+
+            // Direct status code check karke true/false return karna
+            return new SendGrid(apiKey).api(request).getStatusCode() < 300;
+
+        } catch (Exception ex) {
+            return false;
+        }
     }
 
     @Autowired
