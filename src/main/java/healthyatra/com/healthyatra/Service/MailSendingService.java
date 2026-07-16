@@ -82,19 +82,24 @@ public class MailSendingService {
     //Data ko Verified table me save karega
     public Boolean EmailVerification(String email, String userOTP){
         try{
-            EmailVerification emailVerification = new EmailVerification();
-
-            OTPVerification otpVerification = otpVerificationRepository.findByEmail(email);
-            String otp = otpVerification.getOtp();
-            //Check karega ki OTP expire nahi naa ho gaya hai aur same hai yaa nahi.
-            if(userOTP.equals(otp) && LocalDateTime.now().isBefore(otpVerification.getExpiryTime())){
-                emailVerification.setEmail(email);
-                emailVerification.setExpiryTime(LocalDateTime.now().plusMinutes(15));
-
-                //Database me save kar dega
-                emailVerificationRepository.save(emailVerification);
-
+            if (emailVerificationRepository.existsByEmail(email)) {
                 return true;
+            }
+            else {
+                EmailVerification emailVerification = new EmailVerification();
+
+                OTPVerification otpVerification = otpVerificationRepository.findByEmail(email);
+                String otp = otpVerification.getOtp();
+                //Check karega ki OTP expire nahi naa ho gaya hai aur same hai yaa nahi.
+                if (userOTP.equals(otp) && LocalDateTime.now().isBefore(otpVerification.getExpiryTime())) {
+                    emailVerification.setEmail(email);
+                    emailVerification.setExpiryTime(LocalDateTime.now().plusMinutes(15));
+
+                    //Database me save kar dega
+                    emailVerificationRepository.save(emailVerification);
+
+                    return true;
+                }
             }
         }
         catch (Exception e){

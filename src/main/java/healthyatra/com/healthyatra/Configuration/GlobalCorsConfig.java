@@ -14,25 +14,18 @@ import java.util.Arrays;
 public class GlobalCorsConfig {
 
     @Bean
-    // Ye line sabse important hai - Ye CORS ko sabse pehle execute karayegi
     @Order(Ordered.HIGHEST_PRECEDENCE)
     public CorsFilter customCorsFilter() {
         CorsConfiguration config = new CorsConfiguration();
 
-        // Frontend URLs
         config.setAllowedOriginPatterns(Arrays.asList("http://localhost:5173", "http://127.0.0.1:5173"));
 
-        // Allowed Methods & Headers
         config.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS", "PATCH"));
         config.setAllowedHeaders(Arrays.asList("Authorization", "Content-Type", "Accept", "Origin", "X-Requested-With"));
-
-        // Exposed Headers (Taki React headers ko padh sake)
         config.setExposedHeaders(Arrays.asList("Access-Control-Allow-Origin", "Access-Control-Allow-Credentials"));
-
         config.setAllowCredentials(true);
 
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-        // Poore project par lagoo karein
         source.registerCorsConfiguration("/**", config);
 
         return new CorsFilter(source);
