@@ -3,6 +3,7 @@ package healthyatra.com.healthyatra.Controller;
 import healthyatra.com.healthyatra.Model.DoctorProfEntity;
 import healthyatra.com.healthyatra.Service.DoctorProfService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,7 +20,7 @@ public class DoctorProfController {
         if(doctorProfService.createDoctorProf(doctorProf, aadhar)){
             return ResponseEntity.ok("Doctor registered with name : "+doctorProf.getFirst_name());
         }
-        return ResponseEntity.status(500).body("Error in data format!");
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Error in data format!");
     }
 
     @PutMapping("/upd-doc")
@@ -28,7 +29,7 @@ public class DoctorProfController {
         if(doctorProfService.updateDoctorProf(doctorProfEntity, aadhar)){
             return ResponseEntity.ok("Doctor updated with Name : "+doctorProfEntity.getFirst_name());
         }
-        return ResponseEntity.status(500).body("Error in data format!");
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Error in data format!");
     }
 
     //Fetching doctor with aadhar

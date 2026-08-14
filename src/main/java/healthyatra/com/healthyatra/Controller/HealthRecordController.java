@@ -8,6 +8,7 @@ import healthyatra.com.healthyatra.Repository.RegisterRepository;
 import healthyatra.com.healthyatra.Service.DoctorProfService;
 import healthyatra.com.healthyatra.Service.HealthRecordService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -36,7 +37,7 @@ public class HealthRecordController {
         if(healthRecordEntity1 != null){
             return ResponseEntity.ok("Record saved with patient aadhar : "+healthRecordEntity.getMigAadhar()+ " and doctor aadhar : "+aadhar);
         }
-        return ResponseEntity.status(500).body("Error occurred while saving data!");
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error occurred while saving data!");
     }
 
     @GetMapping("/fetch-health/{aadhar}")

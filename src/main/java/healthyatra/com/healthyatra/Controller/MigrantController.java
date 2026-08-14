@@ -1,8 +1,10 @@
 package healthyatra.com.healthyatra.Controller;
 
 import healthyatra.com.healthyatra.Model.MigrantProfEntity;
+import healthyatra.com.healthyatra.Model.PicEntity.ProfPicEntity;
 import healthyatra.com.healthyatra.Service.MigrantProfService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -20,7 +22,7 @@ public class MigrantController {
         if(migrantProfService.createMigrantProf(migrantProfEntity, aadhar)){
             return ResponseEntity.ok("Migrant registered with Name : "+migrantProfEntity.getFirst_name());
         }
-        return ResponseEntity.status(500).body("Error in data format!");
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Error in data format!");
     }
 
     //Upload migrant photo
@@ -37,7 +39,18 @@ public class MigrantController {
         if(migrantProfService.updateMigrantProf(migrantProfEntity, aadhar)){
             return ResponseEntity.ok("Migrant updated with Name : "+migrantProfEntity.getFirst_name());
         }
-        return ResponseEntity.status(500).body("Error in data format!");
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Error in data format!");
+    }
+
+    //Fetch user Profile Pic
+    @GetMapping("/mig-pic/{aadhar}")
+    public ResponseEntity<?> getProfPic(@PathVariable String aadhar){
+        ProfPicEntity profPicEntity = migrantProfService.fetchMigPic(aadhar);
+
+        if(profPicEntity != null){
+            return ResponseEntity.ok(profPicEntity);
+        }
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Something went wrong! Check your Credentials");
     }
 
     //Fetching user with aadhar

@@ -71,6 +71,16 @@ public class MigrantProfServiceImp implements MigrantProfService{
     private ImageKitConfig imageKitConfig;
 
     @Override
+    public ProfPicEntity fetchMigPic(String aadhar){
+        ProfPicEntity profPicEntity = profPicRepository.findByAadhar(aadhar);
+
+        if(profPicEntity != null){
+            return profPicEntity;
+        }
+        throw new RuntimeException("Pic not found!");
+    }
+
+    @Override
     public String migrantPic(String aadhar,MultipartFile file){
         ProfPicEntity profPicEntity = profPicRepository.findByAadhar(aadhar);
         String picUrl = "";

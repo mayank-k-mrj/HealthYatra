@@ -10,6 +10,7 @@ import healthyatra.com.healthyatra.Service.RegisterService;
 import healthyatra.com.healthyatra.Service.JwtService; // <-- JWT Service Import karo
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager; // <-- Import for Auth
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken; // <-- Import
@@ -100,7 +101,7 @@ public class RegisterController {
         if(sent){
             return ResponseEntity.ok("OTP sent on email : "+email);
         }
-        return ResponseEntity.status(500).body("Error occurred Please check your email.");
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Error occurred Please check your email.");
     }
 
     // User otp bhejega verification ke liye
@@ -110,7 +111,7 @@ public class RegisterController {
         if(verified){
             return ResponseEntity.ok("Verification Successful!");
         }
-        return ResponseEntity.status(500).body("Verification failed!");
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Verification failed!");
     }
 
     @GetMapping("/loggedIn")
