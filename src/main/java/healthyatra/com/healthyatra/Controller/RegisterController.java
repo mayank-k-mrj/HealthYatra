@@ -2,6 +2,7 @@ package healthyatra.com.healthyatra.Controller;
 
 import healthyatra.com.healthyatra.Configuration.PasswordConfig;
 import healthyatra.com.healthyatra.DTO.EmailRequest;
+import healthyatra.com.healthyatra.DTO.RegistrationDTO;
 import healthyatra.com.healthyatra.DTO.VerificationData;
 import healthyatra.com.healthyatra.Model.RegisterEntity;
 import healthyatra.com.healthyatra.Repository.RegisterRepository;
@@ -126,6 +127,16 @@ public class RegisterController {
             return aadhar;
         }
         return "Aadhar not found with email "+email;
+    }
+
+    @GetMapping("/getReg-data/{aadhar}")
+    public ResponseEntity<?> fetchRegistered(@PathVariable String aadhar){
+        RegistrationDTO registrationDTO = registerService.fetchRegistered(aadhar);
+
+        if(registrationDTO != null){
+            return ResponseEntity.ok(registrationDTO);
+        }
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).body("User not exits with aadhar : "+aadhar);
     }
 
     @GetMapping("/testdb")

@@ -1,5 +1,6 @@
 package healthyatra.com.healthyatra.Service;
 
+import healthyatra.com.healthyatra.DTO.RegistrationDTO;
 import healthyatra.com.healthyatra.Model.EmailVerify.EmailVerification;
 import healthyatra.com.healthyatra.Model.RegisterEntity;
 import healthyatra.com.healthyatra.Repository.EmailVerificationRepository;
@@ -45,5 +46,21 @@ public class RegisterImpService implements RegisterService{
         emailVerificationRepository.delete(verification);
 
         return saveUser;
+    }
+
+    @Override
+    public RegistrationDTO fetchRegistered(String aadhar){
+        RegisterEntity register = registerRepository.findByAadhar(aadhar);
+
+        if(aadhar != null){
+            RegistrationDTO registrationDTO = new RegistrationDTO(
+                    register.getName(),
+                    register.getPhone(),
+                    register.getRoles()
+            );
+
+            return registrationDTO;
+        }
+        throw new RuntimeException("User not existe with this aadhar!");
     }
 }
