@@ -8,4 +8,5 @@ public interface HealthRecordService {
     HealthRecordEntity CreateHealthRecord(HealthRecordEntity healthRecordEntity, String aadhar);
     List<HealthRecordEntity> fetchHealthRecord(String aadhar);
     HealthRecordEntity updateHealthRecord(HealthRecordEntity healthRecordEntity, Long id);
+    List<HealthRecordEntity> fetchAllRecord();
 }

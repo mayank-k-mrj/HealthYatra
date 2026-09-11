@@ -13,6 +13,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -52,5 +53,15 @@ public class HealthRecordController {
             return healthRecordEntity;
         }
         throw new RuntimeException("Something went wrong while updating record!");
+    }
+
+    @GetMapping("/fetch-all")
+    public ResponseEntity<?> fetchAllHealthRecords(){
+        List<HealthRecordEntity> list = new ArrayList<>();
+        list.addAll(healthRecordService.fetchAllRecord());
+        if(list != null){
+            return ResponseEntity.ok(list);
+        }
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).body("No Data available in DB!");
     }
 }
