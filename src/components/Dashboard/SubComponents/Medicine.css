@@ -1,0 +1,303 @@
+.medication-records-container {
+  width: 100%;
+  min-height: 100vh;
+  background-color: #f9fafb;
+  padding: 28px 36px;
+  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  color: #1e293b;
+  box-sizing: border-box;
+}
+
+.medication-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 32px;
+}
+
+.greeting-text {
+  font-size: 14px;
+  font-weight: 600;
+  color: #475569;
+  margin: 0;
+}
+
+.header-heading {
+  font-size: 28px;
+  font-weight: 800;
+  color: #0f172a;
+  margin: 4px 0;
+  letter-spacing: -0.5px;
+}
+
+.header-subtext {
+  font-size: 13px;
+  color: #64748b;
+  margin: 0;
+}
+
+.header-titles{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.user-profile-badge {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 30px;
+  padding: 4px 14px 4px 5px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
+}
+
+.user-badge-avatar {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  object-fit: cover;
+  background-color: #e2e8f0;
+}
+
+.user-badge-name {
+  font-size: 14px;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.medication-toolbar-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.section-title {
+  font-size: 22px;
+  font-weight: 800;
+  color: #0f172a;
+  margin: 0;
+  letter-spacing: -0.3px;
+}
+
+.toolbar-controls {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.search-box {
+  position: relative;
+  display: flex;
+  align-items: center;
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 8px 14px;
+  width: 320px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+}
+
+.search-box input {
+  width: 100%;
+  border: none;
+  background: transparent;
+  outline: none;
+  font-size: 13px;
+  color: #1e293b;
+  padding-right: 24px;
+}
+
+.search-box input::placeholder {
+  color: #94a3b8;
+}
+
+.search-icon {
+  position: absolute;
+  right: 12px;
+  color: #64748b;
+  pointer-events: none;
+}
+
+.filter-button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 8px 18px;
+  font-size: 13px;
+  font-weight: 700;
+  color: #1e293b;
+  cursor: pointer;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+  transition: all 0.2s ease;
+}
+
+.filter-button:hover {
+  background-color: #f8fafc;
+  border-color: #cbd5e1;
+}
+
+.medication-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.med-record-card {
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.med-record-card:hover {
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.05);
+}
+
+.card-top-row {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.card-diagnosis-title {
+  font-size: 17px;
+  font-weight: 800;
+  color: #0f172a;
+  margin: 0;
+  line-height: 1.3;
+}
+
+.card-meta-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 4px;
+}
+
+.prescribed-label {
+  font-size: 12px;
+  color: #475569;
+  font-weight: 500;
+}
+
+.date-badge {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: #1e293b;
+}
+
+.calendar-icon {
+  color: #475569;
+}
+
+.card-divider {
+  border: none;
+  border-top: 1px solid #f1f5f9;
+  margin: 14px 0;
+}
+
+.card-body-content {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.detail-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.doctor-avatar {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  object-fit: cover;
+  background-color: #e2e8f0;
+  flex-shrink: 0;
+  border: 1px solid #e2e8f0;
+}
+
+.med-pill-box {
+  width: 42px;
+  height: 42px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.orange-bg {
+  background-color: #ffedd5;
+}
+
+.orange-icon {
+  color: #ea580c;
+}
+
+.blue-bg {
+  background-color: #e0f2fe;
+}
+
+.blue-icon {
+  color: #0284c7;
+}
+
+.detail-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.detail-label {
+  font-size: 11px;
+  color: #64748b;
+  font-weight: 500;
+}
+
+.detail-value {
+  font-size: 13px;
+  color: #0f172a;
+  margin-top: 1px;
+}
+
+.font-bold {
+  font-weight: 700;
+}
+
+@media (max-width: 1100px) {
+  .medication-cards-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 700px) {
+  .medication-records-container {
+    padding: 16px;
+  }
+  .medication-cards-grid {
+    grid-template-columns: 1fr;
+  }
+  .medication-toolbar-section {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .search-box {
+    width: 100%;
+  }
+}

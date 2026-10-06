@@ -1,0 +1,99 @@
+body {
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    font-family: 'Inter', -apple-system, sans-serif;
+    box-sizing: border-box;
+}
+
+@keyframes slideUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.ProfPic_container {
+    background: #ffffff;
+    width: 100%;
+    max-width: 400px;
+    padding: 40px 30px;
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    animation: slideUp 0.6s ease-out;
+}
+
+.profile_pic {
+    font-size: 18px;
+    font-weight: 700;
+    color: #1f2937;
+    margin-bottom: 24px;
+    text-align: center;
+    letter-spacing: -0.5px;
+}
+
+.ProfPic_container input[type="file"] {
+    padding: 30px 20px;
+    background-color: #f8fafc;
+    border: 2px dashed #93c5fd;
+    border-radius: 12px;
+    color: #64748b;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+.ProfPic_container input[type="file"]:hover {
+    border-color: #3b82f6;
+    background-color: #eff6ff;
+    transform: scale(1.02);
+}
+
+.ProfPic_container input[type="file"]::file-selector-button {
+    padding: 10px 20px;
+    margin-right: 16px;
+    background: linear-gradient(135deg, #eff6ff, #dbeafe);
+    color: #2563eb;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(59, 130, 246, 0.1);
+}
+
+.ProfPic_container input[type="file"]::file-selector-button:hover {
+    background: linear-gradient(135deg, #dbeafe, #bfdbfe);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 6px rgba(59, 130, 246, 0.15);
+}
+
+.ProfPic_container button {
+    margin-top: 30px;
+    padding: 14px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #ffffff;
+    background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
+}
+
+.ProfPic_container button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(37, 99, 235, 0.35);
+}
+
+.ProfPic_container button:active {
+    transform: translateY(0);
+}

@@ -1,0 +1,14 @@
+.migrant-dashboard-container {
+    display: flex;
+    width: 100%;
+    min-height: 100vh;
+    background-color: #f8fafc;
+}
+
+.migrant-main-box {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}

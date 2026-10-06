@@ -1,0 +1,81 @@
+.migrant-container {
+    background: #ffffff;
+    width: 100%;
+    max-width: 550px;
+    margin: 30px auto;
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
+    box-sizing: border-box;
+    max-height: 85vh;
+    overflow-y: auto;
+    border: 1px solid #e2e8f0;
+}
+
+.migrant-container::-webkit-scrollbar {
+    width: 5px;
+}
+
+.migrant-container::-webkit-scrollbar-thumb {
+    background-color: #cbd5e1;
+    border-radius: 10px;
+}
+
+.migrant_form {
+    display: flex;
+    flex-direction: column;
+}
+
+.migrant_form label {
+    font-size: 13px;
+    font-weight: 600;
+    color: #374151;
+    margin-bottom: 4px;
+    margin-top: 10px;
+}
+
+.migrant_form label:first-of-type {
+    margin-top: 0;
+}
+
+.migrant_form input,
+.migrant_form select {
+    padding: 10px 12px;
+    font-size: 14px;
+    color: #111827;
+    background-color: #f9fafb;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    outline: none;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.migrant_form input:focus,
+.migrant_form select:focus {
+    background-color: #ffffff;
+    border-color: #1d4ed8;
+    box-shadow: 0 0 0 3px rgba(29, 78, 216, 0.15);
+}
+
+.migrant_form button[type='submit'] {
+    margin-top: 20px;
+    padding: 12px;
+    font-size: 15px;
+    font-weight: 600;
+    color: #ffffff;
+    background-color: #1d4ed8;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.migrant_form button[type='submit']:hover {
+    background-color: #1e40af;
+}
+
+.migrant_form button:active {
+    transform: scale(0.98);
+}

@@ -1,0 +1,178 @@
+html, body, #root {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.doc-sidebar {
+  width: 250px;
+  min-width: 250px;
+  height: 100vh;
+  position: sticky;
+  top: 0;
+  left: 0;
+  margin: 0 !important;
+  background-color: #ffffff;
+  border-right: 1px solid #e2e8f0;
+  padding: 24px 16px;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  z-index: 10;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+}
+
+.doc-sidebar-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 8px;
+  margin: 0 0 32px 0;
+}
+
+.doc-logo-icon {
+  width: 36px;
+  height: 36px;
+  margin: 0;
+  background-color: #1d4ed8;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 10px rgba(29, 78, 216, 0.25);
+}
+
+.doc-logo-text {
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  margin: 0;
+}
+
+.doc-logo-text .logo-main {
+  color: #0f172a;
+  margin: 0;
+}
+
+.doc-logo-text .logo-accent {
+  color: #1d4ed8;
+  margin: 0;
+}
+
+.doc-sidebar-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex: 1;
+  margin: 0;
+  padding: 0;
+}
+
+.doc-nav-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 16px;
+  margin: 0;
+  border-radius: 10px;
+  color: #475569;
+  font-size: 15px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.doc-nav-item:hover {
+  background-color: #f8fafc;
+  color: #1d4ed8;
+}
+
+.doc-nav-item.active {
+  background-color: #e8eefc;
+  color: #1d4ed8;
+  font-weight: 600;
+}
+
+.doc-nav-icon {
+  flex-shrink: 0;
+  margin: 0;
+}
+
+.doc-nav-item.active .doc-nav-icon {
+  color: #1d4ed8;
+}
+
+.doc-nav-label {
+  white-space: nowrap;
+  margin: 0;
+}
+
+.doc-sidebar-footer {
+  margin: auto 0 0 0;
+  padding: 12px 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid #f1f5f9;
+  cursor: pointer;
+}
+
+.doc-profile-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0;
+}
+
+.doc-profile-avatar {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin: 0;
+}
+
+.doc-profile-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: #0f172a;
+  white-space: nowrap;
+  margin: 0;
+}
+
+.doc-profile-chevron {
+  color: #64748b;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .doc-sidebar {
+    width: 72px;
+    min-width: 72px;
+    padding: 20px 8px;
+    margin: 0 !important;
+  }
+
+  .doc-logo-text,
+  .doc-nav-label,
+  .doc-profile-name,
+  .doc-profile-chevron {
+    display: none;
+  }
+
+  .doc-sidebar-header {
+    justify-content: center;
+    padding: 0;
+    margin: 0 0 32px 0;
+  }
+
+  .doc-nav-item {
+    justify-content: center;
+    padding: 12px;
+    margin: 0;
+  }
+
+  .doc-sidebar-footer {
+    justify-content: center;
+    margin: auto 0 0 0;
+  }
+}
