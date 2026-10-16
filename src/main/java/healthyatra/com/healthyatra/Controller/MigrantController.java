@@ -58,5 +58,4 @@ public class MigrantController {
     public MigrantProfEntity fetchMigrant(@PathVariable String aadhar){
         return migrantProfService.fetchMigrant(aadhar);
     }
-
 }
